@@ -31,7 +31,7 @@ npm run test:e2e
 
 `npm run verify` runs the build, protocol/server tests, and browser tests together. Browser tests use a separate app on port 3344; keep that port free. They spawn a real MCP process over stdio and check browser display acknowledgements. See [verification status](docs/verification.md) for the distinction between automated tests and assistant-client rehearsal.
 
-For the complete student lifecycle (fresh starter → implement → browser/MCP tests → backed-up reset → verify starter again), run `npm run test:rehearsal` or use the [workshop-rehearsal skill](.agents/skills/workshop-rehearsal/SKILL.md). See [full rehearsal and participant reset instructions](docs/full-rehearsal.md). These reusable materials are available on main; use `workshop/full-rehearsal` for test work.
+For the instructor's isolated exercise-cycle test, run `npm run test:rehearsal` or use the [workshop-rehearsal skill](.agents/skills/workshop-rehearsal/SKILL.md). See [presenter rehearsal instructions](docs/full-rehearsal.md). This command belongs to `presenter/complete`; main has its own participant baseline, connection, acceptance, and reset commands.
 
 ## Teach and learn
 
@@ -41,7 +41,7 @@ For the complete student lifecycle (fresh starter → implement → browser/MCP 
 - [Setup and troubleshooting helper](docs/helper-guide.md)
 - [Assets, attribution, and portrait preparation](docs/assets.md)
 
-The root project is the completed demo. `npm run workshop:starter` creates a separate `workshop-starter/` copy with only `list_expressions` implemented. It refuses to overwrite an existing copy. The starter builds and runs; the full acceptance tests intentionally fail until the student implements the remaining tools. Solutions stay available for instructor-assisted recovery.
+This checkout is the completed presenter demo. Participants clone main directly and follow its exercises. The legacy `npm run workshop:starter` command here creates an instructor-only test fixture; it includes solution references and prepared configurations, so do not distribute it as the official participant starter. It refuses to overwrite an existing copy.
 
 ## Configuration
 

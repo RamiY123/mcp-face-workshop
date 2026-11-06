@@ -8,17 +8,23 @@ On main, agents must not retrieve answers from this branch, older solution-beari
 
 ## Before class
 
-Finish the realistic assets, document their redistribution rights, and visually approve all six. Rehearse both supported clients with the actual student account/access tier. Prepare a screen with chat beside the viewer. Confirm the full repo and the generated starter install on a clean machine. Rehearse the timing; no two-hour classroom rehearsal has been completed by the automated test suite.
+Finish the realistic assets, document their redistribution rights, and visually approve all six. Rehearse both supported clients with the actual student account/access tier. Prepare a screen with chat beside the viewer. Confirm the presenter demo and a fresh main clone install on a clean machine. Rehearse the timing; automated tests are not a two-hour classroom rehearsal.
 
-Send students: Node 22.12+ and Git requirements, repository URL, chosen client installation/sign-in instructions, and the pre-work commands from README. Have them run a first MCP call before class. They need sufficient assistant usage allowance. Browser-test downloads are optional for the live class if already tested by the instructor.
+Send students: Node 22.12+ and Git requirements, repository URL, chosen client installation/sign-in instructions, and the pre-work commands from main's README. Before class they should open the viewer and try its buttons. Creating the client configuration and making the first MCP call happen during class. They need sufficient assistant usage allowance. Browser-test downloads are optional during class if already completed beforehand.
 
-Create the starter in advance with `npm run workshop:starter` and distribute instructions to work inside it. Keep the completed root demo available. Never recover by resetting student Git changes.
+Participants clone main directly:
+
+```sh
+git clone --branch main --single-branch --depth 1 https://github.com/RamiY123/mcp-face-workshop.git
+```
+
+Keep your completed demo on presenter/complete. Do not distribute a generated legacy fixture or switch a participant to the presenter branch to resolve an exercise. Use main's hints and the student's own backups for recovery.
 
 | Minutes | Activity |
 | --- | --- |
 | 0–10 | Show a humorous conversation and three deliberate face tool calls. |
-| 10–25 | Explain host/client/server/tools using the request-path diagram. |
-| 25–40 | Start repo, connect client, call list_expressions. |
+| 10–25 | Explain host/client/server/tools and trace the supplied listing example. |
+| 25–40 | Students write their client configuration, check it, and call list_expressions. |
 | 40–65 | Implement set_expression and validation. |
 | 65–90 | Implement reset, stop the server, handle failures, test. |
 | 90–110 | Pair challenge and recovery help. |

@@ -1,6 +1,6 @@
 # Full rehearsal and participant reset
 
-The reusable scripts, instructions, and workshop-rehearsal skill are published on **main**. Use **workshop/full-rehearsal** for rehearsal work and experiments. This rehearsal uses the actual MCP SDK over stdio and Chromium to verify the application; it does not impersonate a signed-in assistant conversation.
+This is the **presenter/complete** rehearsal. It verifies the completed demo and an isolated legacy exercise fixture through actual MCP stdio and Chromium. It does not impersonate a signed-in assistant conversation or test the exact participant distribution. Participants clone **main**, whose own instructions cover baseline checks, connection exercises, acceptance tests, and reset scope.
 
 ## Use the skill
 
@@ -11,7 +11,7 @@ In Codex, invoke `$workshop-rehearsal`; in Claude Code, invoke `/workshop-rehear
 From the repository root:
 
 ```sh
-git switch workshop/full-rehearsal
+git switch presenter/complete
 npm ci
 npx playwright install chromium
 npm run test:rehearsal
@@ -36,11 +36,11 @@ The reference solution is copied only inside the disposable rehearsal copy. This
 
 Results: `test-results/rehearsal.json` records each check and its outcome, the exact retained temporary workspace, and any failure. Browser screenshots are in that temporary student copy's `test-results/`. The workspace is retained for inspection and recovery; the script does not recursively delete it. A failed check produces a nonzero exit code. Install the test browser beforehand; the rehearsal does not silently download browsers.
 
-## Prepare participants
+## Instructor-only fixture
 
-Run `npm run workshop:starter` from the demo. It creates `workshop-starter/` and refuses to overwrite an existing directory. If you already have a starter from an earlier version, preserve or rename that folder first, then generate a new one. Do not add a marker to an old folder to bypass the reset guard.
+The legacy `npm run workshop:starter` command creates an instructor-only `workshop-starter/` fixture and refuses to overwrite an existing directory. It contains prepared client configurations and solutions, so do not distribute it to participants. Preserve existing folders; do not add markers to bypass reset guards.
 
-Inside the new starter, participants run `npm ci`, `npm run build`, and `npm start`, then connect their chat client. The initial list tool works. They implement the missing set and reset registrations in `exercises/student-tools.ts`. Optional challenge files go under `exercises/participant/`.
+For the actual workshop, send students the main-branch clone commands and instructions. They create their client configuration and implement missing tools there. The reset commands below apply only to this presenter branch's legacy fixture; main documents its separate reset behavior, including the optional connection reset.
 
 ## Clear participant additions and restart the exercises
 
