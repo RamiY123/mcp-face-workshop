@@ -23,13 +23,14 @@ async function start() {
   const response = await fetch('/api/expressions');
   if (!response.ok) throw new Error('Could not load expression manifest');
   const manifest = await response.json() as { temporary: boolean; expressions: Expression[] };
-  element('asset-note').textContent = manifest.temporary ? 'PLACEHOLDERS · FINAL PORTRAIT PENDING' : 'PORTRAIT EXPRESSIONS';
+  element('asset-note').textContent = manifest.temporary ? 'ILLUSTRATED DEMO · PORTRAIT PENDING' : 'PORTRAIT EXPRESSIONS';
+  element('expression-count').textContent = String(manifest.expressions.length);
   for (const [index, expression] of manifest.expressions.entries()) {
     const button = document.createElement('button');
     button.dataset.expression = expression.id;
     button.title = expression.description;
     const number = document.createElement('span');
-    number.textContent = `0${index + 1}`;
+    number.textContent = String(index + 1).padStart(2, '0');
     button.append(number, document.createTextNode(expression.label));
     button.disabled = true;
     button.addEventListener('click', async () => {

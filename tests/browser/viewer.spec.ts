@@ -21,7 +21,7 @@ test('manual controls and MCP calls visibly update the browser, including after 
   const client = new Client({ name: 'browser-test', version: '1.0.0' });
   try {
     await client.connect(new StdioClientTransport({ command: process.execPath, args: [resolve('dist/mcp/index.js')], env: { ...process.env as Record<string, string>, FACE_PORT: '3344' } }));
-    for (const name of ['shocked', 'eye_roll', 'wink', 'confused']) {
+    for (const name of ['shocked', 'eye_roll', 'wink', 'angry', 'happy', 'laughing', 'sad', 'sleepy', 'love', 'confused']) {
       const response = await client.callTool({ name: 'set_expression', arguments: { name } });
       expect(JSON.parse((response.content as { text: string }[])[0].text)).toMatchObject({ name, displayed: true, status: 'displayed' });
       await expect(page.locator('#face')).toHaveAttribute('src', new RegExp(`${name}.svg$`));
