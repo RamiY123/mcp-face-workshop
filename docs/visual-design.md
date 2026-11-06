@@ -7,3 +7,7 @@ The original logo is served locally from `web/public/branding/xperience-logo.png
 The expression remains the primary visual. Presets have a visible selected state, keyboard focus, and comfortable touch targets. Status and activity remain readable independently of color. Layout adapts from two columns to a stacked phone view; the interface does not depend on external fonts or image hosts.
 
 The temporary expression SVGs use a lavender palette to fit the interface. They remain explicitly labeled development placeholders; this styling does not replace the outstanding realistic portrait work.
+
+Each new expression command triggers a 1.05–1.25 second pop-out: anticipation, zoom and tilt beyond the card, a violet/orange spark burst, then a bounce home. Angry, shocked, laughing, and love use a stronger zoom. A new command for the same expression replays the effect; initial page load and reconnecting to the same command do not. Rapid commands replace the active effect. The decorative overlay never intercepts controls or changes the page layout. Reduced-motion preferences disable the effect, including immediately cancelling an effect already in progress.
+
+The viewer acknowledges the loaded expression after a paint opportunity; it does not wait for the animation to finish. Display confirmation therefore means the expression has appeared, not that its animation has completed.

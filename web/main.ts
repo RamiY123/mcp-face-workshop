@@ -1,10 +1,13 @@
 import './style.css';
+import { createFaceAnimator } from './face-animation';
 type Expression = { id: string; label: string; description: string; asset: string };
 type State = { name: string; commandId: string; viewerId: string; changedAt: string; source: string };
 const element = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
 const connection = element('connection');
 const feedback = element('feedback');
 const face = element<HTMLImageElement>('face');
+const animator = createFaceAnimator(face);
+let previousEventCommand: string | undefined;
 let latestCommand = '';
 let connected = false;
 let busy = false;
@@ -50,6 +53,9 @@ async function start() {
   events.onerror = () => { connected = false; connection.textContent = '○ Reconnecting…'; connection.className = ''; feedback.textContent = 'Connection lost. Start the app; the viewer will reconnect automatically.'; updateButtons(); };
   events.onmessage = async event => {
     const state = JSON.parse(event.data) as State;
+    const animateChange = previousEventCommand !== undefined && previousEventCommand !== state.commandId;
+    previousEventCommand = state.commandId;
+    animator.stop();
     latestCommand = state.commandId;
     const expression = manifest.expressions.find(e => e.id === state.name);
     if (!expression) { feedback.textContent = `Unknown expression: ${state.name}`; return; }
@@ -59,6 +65,7 @@ async function start() {
       await preload.decode();
       if (latestCommand !== state.commandId) return;
       face.src = preload.src; face.alt = `${expression.label} expression${manifest.temporary ? ' (development placeholder)' : ''}`;
+      if (animateChange) animator.play(state.name);
       element('current').textContent = expression.label;
       element('source').textContent = `${state.source.toUpperCase()} / ${state.name.toUpperCase()}`;
       for (const button of buttons) button.setAttribute('aria-pressed', String(button.dataset.expression === state.name));
