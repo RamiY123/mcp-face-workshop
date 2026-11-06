@@ -6,7 +6,7 @@ import { createApp } from '../../server/app.js';
 test('prepared viewer works with manual controls before the MCP exercises', async ({ page }) => {
   await page.goto('/');
   await expect(page.locator('#connection')).toContainText('Connected');
-  for (const id of ['neutral', 'smug', 'shocked', 'eye_roll', 'wink', 'confused']) {
+  for (const id of ['neutral', 'smug', 'shocked', 'eye_roll', 'wink', 'confused', 'angry', 'happy', 'laughing', 'sad', 'sleepy', 'love']) {
     await page.locator(`[data-expression="${id}"]`).click();
     await expect(page.locator('#face')).toHaveAttribute('src', new RegExp(`${id}.svg$`));
     await expect(page.locator('#feedback')).toContainText('Displayed in the viewer.');

@@ -45,4 +45,4 @@ Preview with `npm run workshop:reset`, then add `-- --apply` to restore the init
 
 Default port: 3333. If changing it, set `FACE_PORT` consistently in the app and MCP environment. State survives browser refresh; app restart resets to neutral.
 
-The six images are development placeholders. Final realistic portraits and personal-face uploads remain future work. Expressions represent selected reactions, not experienced feelings. Code and original SVGs are MIT; the Xperience logo remains its owner's brand asset (see `web/public/branding/README.md`).
+The 12 images are expressive illustrated demo assets, including angry, happy, laughing, sad, sleepy, and love. Final realistic portraits and personal-face uploads remain future work. Expressions represent selected reactions, not experienced feelings. Code and original SVGs are MIT; the Xperience logo remains its owner's brand asset (see `web/public/branding/README.md`).
