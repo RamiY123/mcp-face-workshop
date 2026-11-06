@@ -47,4 +47,4 @@ The viewer binds only to `127.0.0.1`. Default port: `3333`. To change it in Powe
 
 Prepared still images change expressions; this version does not animate speech or lip-sync. Expressions represent conversational reactions, not feelings experienced by an assistant.
 
-Code and original placeholder SVGs: MIT. Any replacement portraits must have their own documented redistribution rights.
+Code and original placeholder SVGs: MIT. The Xperience logo remains its owner's brand asset; see [branding attribution](web/public/branding/README.md). Any replacement portraits must have their own documented redistribution rights. See [visual design notes](docs/visual-design.md) for the viewer's Xperience styling.

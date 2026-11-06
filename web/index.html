@@ -1,15 +1,16 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Face Lab · MCP Workshop</title></head>
+<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="theme-color" content="#100b19"/><title>Xperience · Face Lab</title></head>
 <body>
-  <header><a class="brand" href="/">◉ FACE LAB <span>/ MCP WORKSHOP</span></a><span id="connection" role="status">Connecting…</span></header>
+  <a class="skip-link" href="#lab">Skip to face controls</a>
+  <header><div class="brand-group"><a class="brand" href="/" aria-label="Xperience Face Lab home"><img src="/branding/xperience-logo.png" alt="Xperience" width="1024" height="370"/></a><span class="header-divider" aria-hidden="true"></span><div class="lab-name">FACE LAB<span>HANDS-ON MCP WORKSHOP</span></div></div><span id="connection" role="status">Connecting…</span></header>
   <main>
-    <section class="intro"><div><p class="eyebrow">A LITTLE EXPRESSION. A VISIBLE TOOL CALL.</p><h1>Give your assistant<br/>a <em>face.</em></h1></div><p class="lede">One conversation. Six reactions.<br/>Watch MCP turn a request into something you can see.</p></section>
-    <div class="workspace">
-      <section class="stage" aria-label="Expression viewer"><div class="stage-top"><span>LIVE VIEWER</span><span id="source">STARTUP</span></div><img id="face" alt="Loading expression"/><div class="stage-bottom"><div><span class="eyebrow">CURRENT EXPRESSION</span><h2 id="current">Neutral</h2></div><span class="asset-badge" id="asset-note">DEVELOPMENT ASSETS</span></div></section>
-      <aside><section class="controls"><p class="eyebrow">01 / TRY A REACTION</p><h2>Set the mood.</h2><p class="muted">Click a preset, or let your assistant call it.</p><div id="buttons" class="buttons"></div><p id="feedback" role="status">Waiting for the viewer…</p></section><section class="trace"><div class="trace-heading"><p class="eyebrow">02 / FOLLOW THE CALL</p><span class="live-dot"></span></div><ol id="log" aria-live="polite"></ol></section></aside>
+    <section class="intro"><div><p class="eyebrow"><span class="accent-line" aria-hidden="true"></span> LEARN BY BUILDING</p><h1>Give your assistant<br/>a <em>face.</em></h1></div><div class="intro-detail"><span class="workshop-tag">BUILD. CALL. SEE.</span><p class="lede">One conversation. Six reactions.<br/>Make your first MCP tool call visible.</p></div></section>
+    <div class="workspace" id="lab" tabindex="-1">
+      <section class="stage" aria-label="Expression viewer"><div class="stage-top"><span class="viewer-label">EXPRESSION VIEWER</span><span id="source">STARTUP</span></div><div class="portrait-halo" aria-hidden="true"></div><img id="face" alt="Loading expression"/><div class="stage-bottom"><div><span class="eyebrow">CURRENT EXPRESSION</span><h2 id="current">Neutral</h2></div><span class="asset-badge" id="asset-note">DEVELOPMENT ASSETS</span></div></section>
+      <aside><section class="controls"><p class="eyebrow">01 / EXPLORE</p><h2>Choose a reaction.</h2><p class="muted">Try a preset, then ask your assistant to change it.</p><div id="buttons" class="buttons" role="group" aria-label="Face expressions"></div><p id="feedback" role="status">Waiting for the viewer…</p></section><section class="trace"><div class="trace-heading"><p class="eyebrow">02 / WATCH IT HAPPEN</p><span class="trace-caption">ACTIVITY</span></div><ol id="log" aria-live="polite" aria-label="Expression activity"></ol></section></aside>
     </div>
     <section class="path"><span>ASSISTANT</span><b>→</b><span>MCP TOOL</span><b>→</b><span>LOCAL SERVER</span><b>→</b><span>YOUR VIEWER</span></section>
-    <footer><span>Expressions are reactions chosen by the assistant, not feelings it experiences.</span><span>FACE LAB / 01</span></footer>
+    <footer><span>Expressions are selected reactions, not feelings experienced by the assistant.</span><span>XPERIENCE <span class="footer-dot" aria-hidden="true">/</span> LEARNING THROUGH PRACTICE</span></footer>
   </main><script type="module" src="/main.ts"></script>
 </body></html>
