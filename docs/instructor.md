@@ -1,5 +1,11 @@
 # Instructor runbook
 
+## Branch roles
+
+Use `presenter/complete` for the completed demo and instructor-only solution references. Participants clone `main` directly; do not ask them to generate a nested starter from this branch. The legacy starter/rehearsal commands here test the completed demo's isolated exercise cycle, not the exact contents of the new main branch.
+
+On main, agents must not retrieve answers from this branch, older solution-bearing history, remote refs, other checkouts, or the former workshop/full-rehearsal branch. This preserves configuration, debugging, and implementation practice. Instructor maintenance can compare branches only when explicitly requested by the instructor. A public branch is not an access-control boundary; the rule is a teaching constraint.
+
 ## Before class
 
 Finish the realistic assets, document their redistribution rights, and visually approve all six. Rehearse both supported clients with the actual student account/access tier. Prepare a screen with chat beside the viewer. Confirm the full repo and the generated starter install on a clean machine. Rehearse the timing; no two-hour classroom rehearsal has been completed by the automated test suite.

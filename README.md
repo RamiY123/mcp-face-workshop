@@ -1,5 +1,7 @@
 # Give your assistant a face
 
+**Presenter edition — `presenter/complete`.** This branch contains the completed demo, client configurations, solutions, and instructor rehearsal tools. Participants clone `main`, which is the official learning starter. Do not distribute this branch as their starting point.
+
 A two-hour, hands-on MCP workshop for final-year students. An assistant calls three local tools; a browser viewer shows the selected reaction immediately.
 
 **Status:** working application with six clearly labeled development placeholders. The final realistic portrait and expression assets are pending. No LivePortrait, GPU, Python, database, or cloud account is needed to run the student app.
