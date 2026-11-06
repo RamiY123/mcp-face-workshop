@@ -3,6 +3,15 @@ import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import { StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js';
 import { resolve } from 'node:path';
 import { createApp } from '../../server/app.js';
+test('prepared viewer works with manual controls before the MCP exercises', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.locator('#connection')).toContainText('Connected');
+  for (const id of ['neutral', 'smug', 'shocked', 'eye_roll', 'wink', 'confused']) {
+    await page.locator(`[data-expression="${id}"]`).click();
+    await expect(page.locator('#face')).toHaveAttribute('src', new RegExp(`${id}.svg$`));
+    await expect(page.locator('#feedback')).toContainText('Displayed in the viewer.');
+  }
+});
 test('manual controls and MCP calls visibly update the browser, including after refresh', async ({ page }) => {
   await page.goto('/');
   await expect(page.locator('#connection')).toContainText('Connected');

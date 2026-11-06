@@ -1,39 +1,46 @@
-# Student lab
+# Participant lab
 
-Start from the isolated copy made by `npm run workshop:starter`. In that copy run `npm ci`, `npm run build`, and `npm start`. Connect your assistant client. `list_expressions` is your working example; edit `exercises/student-tools.ts`. Rebuild and restart MCP after each edit.
+Work directly in your clone of main. Do not use presenter branches or old solution commits. The viewer, HTTP server, stdio bootstrap in `mcp/index.ts`, and `list_expressions` are supplied examples so you can focus on the MCP connection and tools.
 
-The required exercises edit **only `exercises/student-tools.ts`**; no other new files are required. Put any new optional challenge modules in **`exercises/participant/`** and import them from your student file. Files in that directory are part of the reset scope. Keep personal notes elsewhere.
+## 1 — Connect your assistant (15 minutes)
 
-## 1 — Read the path (15 minutes)
+Read your client guide in `docs/client-setup/`. Create its project configuration yourself. Name the server `face-workshop`, choose stdio, launch Node, and point to the compiled MCP entry in this checkout. Explain why this is a separate process from `npm start`.
 
-Call `list_expressions`. Locate the manifest and tool registration. Explain which process runs the tool and why browser SSE is not MCP stdio. Change one description, rebuild, restart MCP, and check the listing.
+- Copilot: create `.vscode/mcp.json`.
+- Claude: create `.mcp.json` at the repository root.
 
-## 2 — Set a reaction (25 minutes)
+Create only the configuration for the client you use. These files are ignored by Git. Build, then run `npm run check:connection -- copilot` or `npm run check:connection -- claude`. That check reads your actual configuration and starts its server. Enable/trust it in your client, then call `list_expressions` through chat.
 
-Register `set_expression` with a required, validated `name`. Use the manifest's IDs and `requestExpression` from `mcp/commands.ts`. Return an MCP text content result containing the server response. Catch runtime errors and mark results `isError: true`.
+Checkpoint: explain the configuration's top-level key, server name, command, arguments, and transport. Show an actual tool result, not just assistant prose.
 
-Acceptance: a valid expression changes the browser; an invalid ID fails without changing state; a closed viewer returns accepted_no_viewer instead of claiming display.
+Hint 1: the browser URL is not the MCP transport here.
 
-Hint 1: look at how list_expressions registers its callback and returns content.
+Hint 2: the compiled entry is `dist/mcp/index.js`; plain Node is not launching source TypeScript here.
 
-Hint 2: Zod can describe an enum of manifest IDs. The SDK validates arguments before your callback. HTTP failures still need handling inside the callback.
+## 2 — Trace the working example (10 minutes)
 
-## 3 — Reset and recover (25 minutes)
+Follow the listing call through `mcp/index.ts`, `exercises/student-tools.ts`, and the manifest. Explain registration and the text-content envelope in `shared/result.ts`. Identify the stdio startup code and explain why stdout logging would corrupt the protocol.
 
-Register `reset_expression` with no arguments. Reuse your change path with neutral. Stop the app and call set_expression: the error should tell you how to restart it. Refresh the browser after an update and explain why state is restored.
+## 3 — Implement set_expression (25 minutes)
 
-Hint 1: reset is a special case of changing the expression.
+Register the tool in `exercises/student-tools.ts`. Require a validated name based on manifest IDs. Use `requestExpression` from `mcp/commands.ts` and return its status in MCP content. Return `isError: true` for runtime failures.
 
-Hint 2: `requestExpression('neutral')` uses the same HTTP and acknowledgement flow. Do not report success from a catch block.
+Checkpoint: valid IDs change the viewer; invalid IDs preserve state; a disconnected viewer never produces a false display claim.
 
-Run `npm run build` and `npm test`. After installing the browser with `npx playwright install chromium`, run `npm run test:e2e`. The complete suite expects all three tools, so it intentionally fails while exercises are incomplete.
+Hint 1: use the list registration as a structural example.
 
-## 4 — Pair challenge (20 minutes)
+Hint 2: Zod can express allowed IDs. Schema errors occur before the callback; HTTP failures need handling inside it.
 
-Choose one: add a seventh expression and its asset; add a timed return to neutral that does not overwrite a newer command; or add a bounded expression sequence. Define expected behavior before coding. Test interrupted sequences or overlapping commands. Intensity is meaningful only if your assets actually support it.
+## 4 — Reset and diagnose (25 minutes)
 
-## Recovery
+Register `reset_expression` with no arguments and reuse your change path for neutral. Stop the app and explain the resulting tool error. Reopen the viewer after a command and check restored state. Rebuild and restart MCP after edits.
 
-To return a newly generated starter to the initial exercise state, preview with `npm run workshop:reset`, then apply with `npm run workshop:reset -- --apply`. This moves your current student file and optional participant directory into a timestamped `.workshop-backups/` folder and restores the listing-only template. Rebuild and restart MCP afterward. The script refuses to run in the completed demo. See [the exact reset scope and restoration steps](../docs/full-rehearsal.md).
+Checkpoint: run `npm run test:acceptance`. It tests your actual tools over stdio and browser acknowledgements. No answer implementation is substituted.
 
-The completed registrations are in `solutions/tools.ts`. Ask for a hint before opening the full answer. To recover, first save a copy of your student file, then compare and selectively restore the missing code. An instructor may copy the full solution into `exercises/student-tools.ts` when you request it; import paths match. The original demo outside the starter remains usable throughout.
+## 5 — Pair challenge (20 minutes)
+
+Add an expression, a timed reset that cannot overwrite newer commands, or a bounded sequence. Put new optional modules in `exercises/participant/` and import them from your tool file. Keep personal notes elsewhere. Manifest and asset edits are outside the automatic reset scope.
+
+## Recover
+
+Preview `npm run workshop:reset`; add `--include-client-config` to repeat connection setup too. Apply when ready, rebuild, and restart MCP. Original work goes into `.workshop-backups/`. Inspect your own backups or ask for hints; do not recover by copying presenter answers. Full instructions are in `docs/full-rehearsal.md`.

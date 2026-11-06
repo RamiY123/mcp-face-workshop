@@ -10,3 +10,7 @@ workshop-starter/
 MCP_Workshop_Codex_Handoff.md
 .workshop-backups/
 .workshop-starter.json
+# Participant-created connections stay local to their workspace.
+.mcp.json
+.vscode/mcp.json
+.codex/config.toml

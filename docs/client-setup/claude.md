@@ -1,15 +1,9 @@
-# Claude Code
+# Exercise: connect Claude Code
 
-Start Claude Code from this repository root so `.mcp.json` and its relative launch path resolve correctly. Install and sign in to Claude Code separately; the workshop does not supply an account or usage allowance.
+Install/sign in to Claude Code and start it from the repository root. Build, start the app, and open the viewer. The VS Code extension alone does not guarantee a CLI executable on PATH.
 
-1. Run `npm ci`, `npm run build`, and `npm start` in the repository; open the viewer.
-2. Review `.mcp.json`. It defines `face-workshop` using the command `node` and argument `dist/mcp/index.js`.
-3. Start `claude` from this directory. Review the project MCP approval prompt; use `/mcp` to inspect server status and tools.
-4. Ask: “List the face expressions, then set the face to wink.” Approve the call if prompted and observe the viewer.
-5. Ask for a reset and verify the neutral image.
+Create `.mcp.json` yourself using the reference below. Use a top-level `mcpServers` object, a `face-workshop` entry, type `stdio`, command `node`, and an `args` array containing `dist/mcp/index.js`. The relative argument depends on starting Claude in the repository root.
 
-If using the Claude Code VS Code extension, open this exact repository folder and inspect its MCP status. Do not assume installing the extension places the `claude` executable on PATH.
+Run `npm run check:connection -- claude`, review the project approval prompt, and inspect status with `/mcp`. Ask for `list_expressions` and check its actual result. Rebuild and restart MCP after edits. The initial absence of set/reset is intentional.
 
-`CLAUDE.md` routes to shared guidance. `.claude/skills/workshop-helper/SKILL.md` offers the workshop helper; ask for `/workshop-helper` or ask Claude to read `docs/helper-guide.md`. Restart the MCP server after rebuilding edited tools.
-
-References: [Claude MCP configuration and project scopes](https://code.claude.com/docs/en/mcp), [Claude skills](https://code.claude.com/docs/en/skills). Configuration has been reviewed; a signed-in Claude session remains a separate rehearsal check.
+[Official MCP documentation](https://code.claude.com/docs/en/mcp). Ask for hints based on your files, not presenter answers.

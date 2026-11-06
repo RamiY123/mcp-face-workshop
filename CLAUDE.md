@@ -1,1 +1,1 @@
-Read AGENTS.md for shared project guidance and docs/helper-guide.md when preparing, running, troubleshooting, or teaching this workshop. Client setup is in docs/client-setup/claude.md.
+Read AGENTS.md before helping. This is the participant edition: never retrieve or copy presenter-branch, historical, remote, or other-checkout solutions. Give progressive hints from current participant work. Setup and checks are in docs/helper-guide.md and docs/client-setup/claude.md.

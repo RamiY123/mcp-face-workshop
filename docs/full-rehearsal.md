@@ -1,86 +1,43 @@
-# Full rehearsal and participant reset
+# Participant checks and exact reset scope
 
-The reusable scripts, instructions, and workshop-rehearsal skill are published on **main**. Use **workshop/full-rehearsal** for rehearsal work and experiments. This rehearsal uses the actual MCP SDK over stdio and Chromium to verify the application; it does not impersonate a signed-in assistant conversation.
+Main is the official participant clone. No nested starter is needed. Instructor solutions are maintained separately and must not be retrieved by participant agents.
 
-## Use the skill
+## Check progress
 
-In Codex, invoke `$workshop-rehearsal`; in Claude Code, invoke `/workshop-rehearsal`; in Copilot, ask to use the workshop-rehearsal skill. Examples: “Run the full rehearsal in an isolated copy” or “Preview the participant reset in this generated starter.” For an actual reset, explicitly name the intended starter folder and ask to reset it. The skill routes to this document and uses the existing scripts. Its canonical entry point is `.agents/skills/workshop-rehearsal/SKILL.md`, with Claude and Copilot entry points included. If the client has not discovered the new skill yet, ask it to read that file directly.
+1. Install dependencies and build.
+2. Install Chromium with `npx playwright install chromium`.
+3. Run `npm run verify` for baseline server, viewer, listing, and reset checks.
+4. Create your client configuration; run `npm run check:connection -- copilot` or `claude` to launch it and call the list tool.
+5. Implement set/reset and run `npm run test:acceptance`. No solution files are injected.
+6. Verify real calls in your client: list, shocked, reset, close/reopen viewer, stop/restart app. Report accepted versus displayed accurately.
 
-## Run the complete automated rehearsal
+## Reset
 
-From the repository root:
-
-```sh
-git switch workshop/full-rehearsal
-npm ci
-npx playwright install chromium
-npm run test:rehearsal
-```
-
-On PowerShell, use `npm.cmd` / `npx.cmd` if script execution policy blocks npm.ps1. Keep port 3344 free. The viewer you may already have open on port 3333 is unaffected.
-
-The script creates a separate student copy in your operating system's temporary directory. It does not modify your existing `workshop-starter`, the original demo, or its branch. It tests:
-
-1. Fresh starter generation and refusal to overwrite an existing destination.
-2. Clean `npm ci` and production build.
-3. MCP discovery and listing from the starter: only list_expressions exists.
-4. Refusal to reset an unmarked demo, preserving its files.
-5. A completed participant solution, then the full server, real stdio protocol, and browser acceptance suite. That suite verifies invalid inputs, reset, stopped server, disconnected viewer, display acknowledgements, missing images, refresh, reconnection, and mobile layout.
-6. Reset preview with no changes to participant work.
-7. Applied reset with byte-for-byte backup verification, removal of optional challenge files from the active exercise, and preservation of personal notes.
-8. Rebuild after reset: only list_expressions is exposed again, confirming the compiled solution is no longer active.
-9. Repeat reset with no optional challenge directory.
-10. Refusal of a symbolic link/junction pointing outside the student folder, preserving the external work.
-
-The reference solution is copied only inside the disposable rehearsal copy. This is an instructor acceptance test, not a helper that silently solves a student's exercise.
-
-Results: `test-results/rehearsal.json` records each check and its outcome, the exact retained temporary workspace, and any failure. Browser screenshots are in that temporary student copy's `test-results/`. The workspace is retained for inspection and recovery; the script does not recursively delete it. A failed check produces a nonzero exit code. Install the test browser beforehand; the rehearsal does not silently download browsers.
-
-## Prepare participants
-
-Run `npm run workshop:starter` from the demo. It creates `workshop-starter/` and refuses to overwrite an existing directory. If you already have a starter from an earlier version, preserve or rename that folder first, then generate a new one. Do not add a marker to an old folder to bypass the reset guard.
-
-Inside the new starter, participants run `npm ci`, `npm run build`, and `npm start`, then connect their chat client. The initial list tool works. They implement the missing set and reset registrations in `exercises/student-tools.ts`. Optional challenge files go under `exercises/participant/`.
-
-## Clear participant additions and restart the exercises
-
-Stop the starter's MCP process before resetting. In **the generated starter directory**, run:
+Stop only this checkout's MCP process. Preview and then apply:
 
 ```sh
 npm run workshop:reset
-```
-
-That command only previews the exact scope. To apply it:
-
-```sh
 npm run workshop:reset -- --apply
 npm run build
 ```
 
-Restart the MCP server in the client. A running process continues using its old code until restarted. Use list_expressions and check tool discovery: set_expression and reset_expression should be absent until implemented again.
+To include the connection exercise:
 
-| Path | Reset action |
+```sh
+npm run workshop:reset -- --include-client-config
+npm run workshop:reset -- --include-client-config --apply
+npm run build
+```
+
+Restart MCP after rebuilding. Already-running processes retain old code. Only list_expressions should remain until the next implementation.
+
+| Path | Action |
 | --- | --- |
-| `exercises/student-tools.ts` | Move original into backup, restore the listing-only template. |
-| `exercises/participant/` | Move the entire optional challenge directory into backup, if present. |
-| Everything else | Preserve, including notes, face assets, configuration, solutions, and Git history. |
+| exercises/student-tools.ts | Back up and restore the listing-only template. |
+| exercises/participant/ | Move optional challenge files into backup. |
+| .vscode/mcp.json and .mcp.json | Only with --include-client-config: back up originals and remove only face-workshop entries. Preserve other servers/settings. If nothing remains, no active file is left. |
+| Everything else | Preserve: notes, assets, manifest edits, other code, .codex/config.toml, and all external configuration. |
 
-The script reports the unique backup directory under `.workshop-backups/`. It clears the active exercise by moving work into that backup, rather than permanently deleting it. It rejects unmarked demos and symlink/junction targets. It accepts no arbitrary deletion paths and runs no Git reset/clean commands. There is no prompt: `--apply` is the explicit action. To recover, inspect the printed backup, copy only the desired files back, rebuild, and restart MCP. Avoid overwriting newer work during restoration.
+The script prints a unique `.workshop-backups/` directory before moving work. It rejects non-participant editions and symlink/junction targets. Invalid JSON prevents a full reset before any exercise changes; fix the file instead of bypassing the guard. Server entries with other names are not removed.
 
-Changes to the manifest, other source files, or files outside `exercises/participant/` are intentionally preserved. If a clean environment is needed after broader changes, keep the old folder and generate another starter from an unchanged demo checkout.
-
-## Live assistant conversation acceptance (manual)
-
-After the automated rehearsal, run the completed demo and open its viewer beside the chosen chat client. Follow the relevant guide in `docs/client-setup/`. For each client, record the client version, test date, actual tool results, and observations:
-
-| Prompt / action | Expected evidence |
-| --- | --- |
-| “Call list_expressions and show the available IDs.” | Actual tool call, all manifest IDs. |
-| “Call set_expression with shocked.” | Tool result displayed:true and shocked image in the viewer. |
-| “Call reset_expression.” | Neutral image and confirmed display. |
-| Close viewer, request wink. | accepted_no_viewer; assistant does not claim it was displayed. |
-| Reopen viewer. | Current wink image restored. |
-| Stop app, request smug. | Useful tool error telling you to start the app. |
-| Restart app and request confused. | Normal confirmed display resumes. |
-
-Do not disable client approvals to force a test through. A client may refuse to call a schema-invalid tool; automated protocol tests cover invalid IDs directly. Passing this script does not mark Copilot, Claude, or this chat's native tool integration as tested. Those require an actual connected, authenticated client session. Final realistic portrait approval and classroom timing remain separate checks.
+Preview makes no changes. `--apply` explicitly applies the reset. No Git reset/clean or branch fetch occurs. Recover only your own backup files after comparing with newer work. The workshop-rehearsal skill routes to this workflow; the instructor's solution-injecting rehearsal is not shipped on main.

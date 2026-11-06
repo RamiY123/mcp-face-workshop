@@ -1,5 +1,0 @@
-{
-  "mcpServers": {
-    "face-workshop": { "type": "stdio", "command": "node", "args": ["dist/mcp/index.js"] }
-  }
-}

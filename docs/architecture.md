@@ -1,5 +1,7 @@
 # Request path
 
+This describes the completed behavior participants are building. On a fresh main checkout, only list_expressions is implemented. The HTTP server, browser viewer, and stdio bootstrap are supplied; client configuration and set/reset registrations are exercises.
+
 ```mermaid
 sequenceDiagram
     participant A as Assistant client

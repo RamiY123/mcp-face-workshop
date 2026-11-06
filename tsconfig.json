@@ -4,5 +4,5 @@
     "strict": true, "outDir": "dist", "rootDir": ".", "skipLibCheck": true,
     "esModuleInterop": true, "types": ["node"]
   },
-  "include": ["server/**/*.ts", "mcp/**/*.ts", "shared/**/*.ts", "exercises/student-tools.ts", "solutions/**/*.ts"]
+  "include": ["server/**/*.ts", "mcp/**/*.ts", "shared/**/*.ts", "exercises/**/*.ts"]
 }

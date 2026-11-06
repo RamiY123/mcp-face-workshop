@@ -1,22 +1,14 @@
 ---
 name: workshop-rehearsal
-description: Run the MCP face workshop's full student rehearsal, preview or apply its participant reset, and verify the resulting MCP tools. Use for workshop reset scope and instructor acceptance checks, not ordinary student hints.
+description: Check progress or safely preview and reset this participant MCP workshop with backups. Use for reset scope and participant verification, not obtaining instructor solutions.
 ---
 
-Read [the authoritative rehearsal and reset instructions](../../../docs/full-rehearsal.md). Resolve commands from the intended repository or generated starter, not from this skill directory.
+Read [AGENTS.md](../../../AGENTS.md) and [the check/reset guide](../../../docs/full-rehearsal.md). Do not retrieve presenter branches, old solution commits, remotes, or other completed checkouts. Never inject a reference implementation to pass tests.
 
-## Rehearse
+Run npm run verify for the prepared baseline. Help participants create their own configuration, then use npm run check:connection -- copilot or claude. Use npm run test:acceptance to check their completed tools. Explain failures as learning checkpoints.
 
-Run `npm run test:rehearsal` from the demo checkout after dependency/browser setup. The script creates an isolated student copy, applies the reference solution only there, tests MCP and browser behavior, resets it, and checks that only list_expressions remains. Read `test-results/rehearsal.json`; report failures and retained workspace paths accurately. Do not reset an existing participant workspace merely to run a rehearsal.
+For reset, establish the exact participant checkout and preview npm run workshop:reset. Default targets are exercises/student-tools.ts and exercises/participant/. Add --include-client-config only when resetting the connection exercise was requested: it backs up project JSON files and removes only face-workshop entries, preserving other settings. It does not change .codex/config.toml or external configuration.
 
-## Reset participant work
+Apply with --apply only for a requested reset, not a preview/instructions request. Do not bypass edition or symlink guards. Report backups, rebuild, and restart only the affected MCP process. Verify only list_expressions remains. Restore the student's own backups when requested, preserving newer work.
 
-Establish the exact generated starter folder and inspect local changes. Run `npm run workshop:reset` there to preview scope. If the user requested a reset of that folder, apply it with `npm run workshop:reset -- --apply`; a request for instructions or a preview alone does not authorize applying it. If the target is ambiguous, ask which starter they mean before applying.
-
-The only reset targets are `exercises/student-tools.ts` (restore the listing-only template) and `exercises/participant/` (clear optional challenge files). The script moves existing work to a unique `.workshop-backups/` folder. Preserve all other files. Never broaden the scope, bypass the marker or symlink guards, or use Git clean/reset as a substitute. For an old unmarked starter, preserve it and generate a fresh copy instead.
-
-Report the actual backup path. Rebuild and restart the affected MCP process so previously compiled solution tools are not still active; do not stop unrelated processes. Verify discovery lists only list_expressions. Restore backups only on request, inspecting newer work before overwriting it.
-
-## Evidence
-
-Distinguish accepted commands from displayed:true acknowledgements. Distinguish SDK protocol/browser verification from native chat-client tool calls; never mark Copilot, Claude, or Codex conversation testing complete merely because scripted tests pass. Use the manual checklist in the shared instructions for a connected client.
+Distinguish accepted from displayed and SDK/browser checks from native signed-in client calls. Give progressive hints from current work rather than silently solving the lab.

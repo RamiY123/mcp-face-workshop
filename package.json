@@ -2,6 +2,7 @@
   "name": "mcp-face-workshop",
   "version": "0.1.0",
   "private": true,
+  "workshopRole": "participant",
   "type": "module",
   "engines": {
     "node": ">=22.12.0"
@@ -11,12 +12,14 @@
     "start": "node dist/server/index.js",
     "mcp": "node dist/mcp/index.js",
     "doctor": "node scripts/doctor.mjs",
-    "test": "vitest run",
+    "test": "vitest run tests/server.test.ts tests/starter.test.ts tests/reset.test.ts tests/connection.test.ts",
     "test:e2e": "playwright test",
-    "verify": "npm run build && npm test && npm run test:e2e",
-    "workshop:starter": "node scripts/create-starter.mjs",
-    "workshop:reset": "node scripts/reset-workshop.mjs",
-    "test:rehearsal": "node scripts/rehearse-workshop.mjs"
+    "verify": "npm run build && npm test && npm run test:e2e:starter",
+    "test:e2e:starter": "playwright test --grep \"prepared viewer|missing image|SSE reconnect\"",
+    "test:acceptance": "npm run build && vitest run tests/mcp.test.ts && npm run test:e2e",
+    "check:connection": "node scripts/check-connection.mjs",
+    "check:starter": "node scripts/check-starter.mjs",
+    "workshop:reset": "node scripts/reset-workshop.mjs"
   },
   "devDependencies": {
     "@playwright/test": "1.65.0",

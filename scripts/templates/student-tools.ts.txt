@@ -1,5 +1,5 @@
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
-import { result } from '../solutions/tools.js';
+import { result } from '../shared/result.js';
 import { manifest } from '../shared/manifest.js';
 // The starter keeps one working example. Follow exercises/README.md to add the other tools.
 export function registerTools(server: McpServer) {
