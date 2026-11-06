@@ -15,7 +15,7 @@
     "test": "vitest run tests/server.test.ts tests/starter.test.ts tests/reset.test.ts tests/connection.test.ts",
     "test:e2e": "playwright test",
     "verify": "npm run build && npm test && npm run test:e2e:starter",
-    "test:e2e:starter": "playwright test --grep \"prepared viewer|missing image|SSE reconnect\"",
+    "test:e2e:starter": "playwright test --grep \"prepared viewer|missing image|SSE reconnect|expression animation|rapid expression\"",
     "test:acceptance": "npm run build && vitest run tests/mcp.test.ts && npm run test:e2e",
     "check:connection": "node scripts/check-connection.mjs",
     "check:starter": "node scripts/check-starter.mjs",
