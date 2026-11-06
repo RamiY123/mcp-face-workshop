@@ -4,6 +4,7 @@ import { StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js'
 import { resolve } from 'node:path';
 import { createApp } from '../../server/app.js';
 test('manual controls and MCP calls visibly update the browser, including after refresh', async ({ page }) => {
+  await page.request.post('/api/expression', { data: { name: 'neutral' } });
   await page.goto('/');
   await expect(page.locator('#connection')).toContainText('Connected');
   await expect(page.locator('#face')).toHaveAttribute('alt', /Neutral expression/);
@@ -16,9 +17,11 @@ test('manual controls and MCP calls visibly update the browser, including after 
       const response = await client.callTool({ name: 'set_expression', arguments: { name } });
       expect(JSON.parse((response.content as { text: string }[])[0].text)).toMatchObject({ name, displayed: true, status: 'displayed' });
       await expect(page.locator('#face')).toHaveAttribute('src', new RegExp(`${name}.svg$`));
+      await expect(page.locator('.face-popout')).toHaveCount(1);
     }
     await page.reload();
     await expect(page.locator('#current')).toHaveText('Confused');
+    await expect(page.locator('.reaction-overlay')).toHaveCount(0);
     await expect.poll(async () => (await (await page.request.get('/api/state')).json()).displayed).toBe(true);
     await page.screenshot({ path: 'test-results/viewer-desktop.png', fullPage: true });
     await page.setViewportSize({ width: 390, height: 844 });

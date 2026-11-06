@@ -100,3 +100,9 @@ footer > span:last-child { font-size: 9px; letter-spacing: 1px; }
   footer { flex-direction: column; gap: 12px; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+.reaction-overlay { position: fixed; inset: 0; z-index: 100; pointer-events: none; overflow: hidden; }
+.face-popout { position: absolute; object-fit: contain; transform-origin: center; will-change: transform; filter: drop-shadow(0 28px 25px #08030e88) drop-shadow(0 0 22px #b573eb55); }
+.reaction-intense .face-popout { filter: drop-shadow(0 32px 28px #08030e99) drop-shadow(0 0 32px #b573eb77); }
+.reaction-ring { position: absolute; border: 2px solid #c999ef; border-radius: 50%; box-shadow: 0 0 25px #a25dd33b; }
+.reaction-spark { position: absolute; width: 7px; height: 17px; border-radius: 6px; }
+@media (prefers-reduced-motion: reduce) { .reaction-overlay { display: none; } }
