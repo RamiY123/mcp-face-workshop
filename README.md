@@ -29,7 +29,7 @@ npm run test:e2e
 
 `npm run verify` runs the build, protocol/server tests, and browser tests together. Browser tests use a separate app on port 3344; keep that port free. They spawn a real MCP process over stdio and check browser display acknowledgements. See [verification status](docs/verification.md) for the distinction between automated tests and assistant-client rehearsal.
 
-For the complete student lifecycle (fresh starter → implement → browser/MCP tests → backed-up reset → verify starter again), run `npm run test:rehearsal`. See [full rehearsal and participant reset instructions](docs/full-rehearsal.md). This work is developed on the `workshop/full-rehearsal` branch.
+For the complete student lifecycle (fresh starter → implement → browser/MCP tests → backed-up reset → verify starter again), run `npm run test:rehearsal` or use the [workshop-rehearsal skill](.agents/skills/workshop-rehearsal/SKILL.md). See [full rehearsal and participant reset instructions](docs/full-rehearsal.md). These reusable materials are available on main; use `workshop/full-rehearsal` for test work.
 
 ## Teach and learn
 

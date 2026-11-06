@@ -1,7 +1,7 @@
 import { mkdir, cp, readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 
-export const workshopFiles = ['package.json', 'package-lock.json', 'tsconfig.json', 'vite.config.ts', 'vitest.config.ts', 'playwright.config.ts', '.gitignore', '.mcp.json', '.vscode', '.github', '.claude', 'AGENTS.md', 'CLAUDE.md', 'README.md', 'LICENSE', 'web', 'server', 'shared', 'mcp', 'assets', 'scripts', 'docs', 'exercises', 'solutions', 'tests', 'preparation'];
+export const workshopFiles = ['package.json', 'package-lock.json', 'tsconfig.json', 'vite.config.ts', 'vitest.config.ts', 'playwright.config.ts', '.gitignore', '.mcp.json', '.vscode', '.github', '.claude', '.agents', 'AGENTS.md', 'CLAUDE.md', 'README.md', 'LICENSE', 'web', 'server', 'shared', 'mcp', 'assets', 'scripts', 'docs', 'exercises', 'solutions', 'tests', 'preparation'];
 
 export async function createStarter(root, target) {
   // Refuse an existing destination; never merge into a participant's previous copy.

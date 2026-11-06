@@ -1,6 +1,10 @@
 # Full rehearsal and participant reset
 
-Development branch: **workshop/full-rehearsal**. The main branch is left unchanged. This rehearsal uses the actual MCP SDK over stdio and Chromium to verify the application; it does not impersonate a signed-in assistant conversation.
+The reusable scripts, instructions, and workshop-rehearsal skill are published on **main**. Use **workshop/full-rehearsal** for rehearsal work and experiments. This rehearsal uses the actual MCP SDK over stdio and Chromium to verify the application; it does not impersonate a signed-in assistant conversation.
+
+## Use the skill
+
+In Codex, invoke `$workshop-rehearsal`; in Claude Code, invoke `/workshop-rehearsal`; in Copilot, ask to use the workshop-rehearsal skill. Examples: “Run the full rehearsal in an isolated copy” or “Preview the participant reset in this generated starter.” For an actual reset, explicitly name the intended starter folder and ask to reset it. The skill routes to this document and uses the existing scripts. Its canonical entry point is `.agents/skills/workshop-rehearsal/SKILL.md`, with Claude and Copilot entry points included. If the client has not discovered the new skill yet, ask it to read that file directly.
 
 ## Run the complete automated rehearsal
 
