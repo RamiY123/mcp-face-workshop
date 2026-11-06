@@ -3,6 +3,7 @@ import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import { StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js';
 import { createApp } from '../server/app.js';
 import { resolve } from 'node:path';
+import { manifest } from '../shared/manifest.js';
 test('real stdio protocol discovers tools, validates arguments, resets and reports server outage', async () => {
   const server = createApp().listen(0, '127.0.0.1');
   await new Promise<void>(resolve => server.once('listening', resolve));
@@ -13,7 +14,7 @@ test('real stdio protocol discovers tools, validates arguments, resets and repor
     await client.connect(transport);
     expect((await client.listTools()).tools.map(t => t.name)).toEqual(['list_expressions', 'set_expression', 'reset_expression']);
     const listing = await client.callTool({ name: 'list_expressions', arguments: {} });
-    expect(JSON.parse((listing.content as { text: string }[])[0].text).expressions).toHaveLength(6);
+    expect(JSON.parse((listing.content as { text: string }[])[0].text).expressions).toEqual(manifest.expressions);
     const update = await client.callTool({ name: 'set_expression', arguments: { name: 'wink' } });
     expect(JSON.parse((update.content as { text: string }[])[0].text)).toMatchObject({ name: 'wink', displayed: false });
     const invalid = await client.callTool({ name: 'set_expression', arguments: { name: 'invalid' } });
