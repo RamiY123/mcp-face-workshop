@@ -8,7 +8,7 @@ On main, agents must not retrieve answers from this branch, older solution-beari
 
 ## Before class
 
-Finish the realistic assets, document their redistribution rights, and visually approve all six. Rehearse both supported clients with the actual student account/access tier. Prepare a screen with chat beside the viewer. Confirm the presenter demo and a fresh main clone install on a clean machine. Rehearse the timing; automated tests are not a two-hour classroom rehearsal.
+Finish the realistic assets, document their redistribution rights, and visually approve every manifest expression. The current demo supplies 12 illustrated reactions. Rehearse both supported clients with the actual student account/access tier. Prepare a screen with chat beside the viewer. Confirm the presenter demo and a fresh main clone install on a clean machine. Rehearse the timing; automated tests are not a two-hour classroom rehearsal.
 
 Send students: Node 22.12+ and Git requirements, repository URL, chosen client installation/sign-in instructions, and the pre-work commands from main's README. Before class they should open the viewer and try its buttons. Creating the client configuration and making the first MCP call happen during class. They need sufficient assistant usage allowance. Browser-test downloads are optional during class if already completed beforehand.
 

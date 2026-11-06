@@ -4,7 +4,7 @@
 
 A two-hour, hands-on MCP workshop for final-year students. An assistant calls three local tools; a browser viewer shows the selected reaction immediately.
 
-**Status:** working application with six clearly labeled development placeholders. The final realistic portrait and expression assets are pending. No LivePortrait, GPU, Python, database, or cloud account is needed to run the student app.
+**Status:** working application with 12 expressive illustrated reactions, including angry, happy, laughing, sad, sleepy, and love. The final realistic portrait assets are pending. No LivePortrait, GPU, Python, database, or cloud account is needed to run the student app.
 
 ## Quick start
 

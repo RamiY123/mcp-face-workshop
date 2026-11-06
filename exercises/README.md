@@ -30,7 +30,7 @@ Run `npm run build` and `npm test`. After installing the browser with `npx playw
 
 ## 4 — Pair challenge (20 minutes)
 
-Choose one: add a seventh expression and its asset; add a timed return to neutral that does not overwrite a newer command; or add a bounded expression sequence. Define expected behavior before coding. Test interrupted sequences or overlapping commands. Intensity is meaningful only if your assets actually support it.
+Choose one: add another expression and its asset; add a timed return to neutral that does not overwrite a newer command; or add a bounded expression sequence. Define expected behavior before coding. Test interrupted sequences or overlapping commands. Intensity is meaningful only if your assets actually support it.
 
 ## Recovery
 
