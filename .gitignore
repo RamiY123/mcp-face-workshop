@@ -8,3 +8,5 @@ playwright-report/
 workshop-starter/
 .DS_Store
 MCP_Workshop_Codex_Handoff.md
+.workshop-backups/
+.workshop-starter.json

@@ -9,3 +9,7 @@ The complete demo is the default. The generated student starter deliberately omi
 Not yet verified: an authenticated Copilot conversation, an authenticated Claude Code conversation, final realistic portrait assets, classroom timing, and student account allowances. A Claude Code VS Code extension was found locally; a Claude CLI executable was not found on PATH. SDK tests do not substitute for the client rehearsal.
 
 Final local results and CI status are recorded in the implementation delivery message. Re-run `npm run verify` after changes.
+
+## Full student lifecycle rehearsal
+
+On 6 November 2026, `npm run test:rehearsal` passed locally on the `workshop/full-rehearsal` branch: all ten lifecycle checks plus the five server/protocol and three Chromium tests inside the completed student copy. The reset preview, backup integrity, preservation of unrelated notes, repeated reset, refusal of unmarked copies, and refusal of an external junction were exercised. Rebuilt reset code exposed only list_expressions through a fresh MCP stdio process. See [the reproducible procedure and exact reset scope](full-rehearsal.md). This result does not claim a signed-in assistant conversation was tested.

@@ -14,7 +14,9 @@
     "test": "vitest run",
     "test:e2e": "playwright test",
     "verify": "npm run build && npm test && npm run test:e2e",
-    "workshop:starter": "node scripts/create-starter.mjs"
+    "workshop:starter": "node scripts/create-starter.mjs",
+    "workshop:reset": "node scripts/reset-workshop.mjs",
+    "test:rehearsal": "node scripts/rehearse-workshop.mjs"
   },
   "devDependencies": {
     "@playwright/test": "1.65.0",

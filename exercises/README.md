@@ -2,6 +2,8 @@
 
 Start from the isolated copy made by `npm run workshop:starter`. In that copy run `npm ci`, `npm run build`, and `npm start`. Connect your assistant client. `list_expressions` is your working example; edit `exercises/student-tools.ts`. Rebuild and restart MCP after each edit.
 
+The required exercises edit **only `exercises/student-tools.ts`**; no other new files are required. Put any new optional challenge modules in **`exercises/participant/`** and import them from your student file. Files in that directory are part of the reset scope. Keep personal notes elsewhere.
+
 ## 1 — Read the path (15 minutes)
 
 Call `list_expressions`. Locate the manifest and tool registration. Explain which process runs the tool and why browser SSE is not MCP stdio. Change one description, rebuild, restart MCP, and check the listing.
@@ -31,5 +33,7 @@ Run `npm run build` and `npm test`. After installing the browser with `npx playw
 Choose one: add a seventh expression and its asset; add a timed return to neutral that does not overwrite a newer command; or add a bounded expression sequence. Define expected behavior before coding. Test interrupted sequences or overlapping commands. Intensity is meaningful only if your assets actually support it.
 
 ## Recovery
+
+To return a newly generated starter to the initial exercise state, preview with `npm run workshop:reset`, then apply with `npm run workshop:reset -- --apply`. This moves your current student file and optional participant directory into a timestamped `.workshop-backups/` folder and restores the listing-only template. Rebuild and restart MCP afterward. The script refuses to run in the completed demo. See [the exact reset scope and restoration steps](../docs/full-rehearsal.md).
 
 The completed registrations are in `solutions/tools.ts`. Ask for a hint before opening the full answer. To recover, first save a copy of your student file, then compare and selectively restore the missing code. An instructor may copy the full solution into `exercises/student-tools.ts` when you request it; import paths match. The original demo outside the starter remains usable throughout.
