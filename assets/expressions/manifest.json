@@ -1,0 +1,12 @@
+{
+  "temporary": true,
+  "credit": "Original development placeholders. Replace with approved realistic portrait assets before teaching the final demo.",
+  "expressions": [
+    { "id": "neutral", "label": "Neutral", "description": "A blank stare. It works on my machine.", "asset": "neutral.svg" },
+    { "id": "smug", "label": "Smug", "description": "A knowing smile after finding the bug.", "asset": "smug.svg" },
+    { "id": "shocked", "label": "Shocked", "description": "Wide-eyed disbelief. You deleted the test?", "asset": "shocked.svg" },
+    { "id": "eye_roll", "label": "Eye roll", "description": "Eyes upward at another creative excuse.", "asset": "eye_roll.svg" },
+    { "id": "wink", "label": "Wink", "description": "A playful wink for a clever workaround.", "asset": "wink.svg" },
+    { "id": "confused", "label": "Confused", "description": "A puzzled reaction to an unclear request.", "asset": "confused.svg" }
+  ]
+}

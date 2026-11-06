@@ -1,0 +1,10 @@
+node_modules/
+dist/
+test-results/
+playwright-report/
+.env
+.env.*
+*.log
+workshop-starter/
+.DS_Store
+MCP_Workshop_Codex_Handoff.md

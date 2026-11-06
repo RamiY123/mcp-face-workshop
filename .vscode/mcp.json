@@ -1,0 +1,5 @@
+{
+  "servers": {
+    "face-workshop": { "type": "stdio", "command": "node", "args": ["${workspaceFolder}/dist/mcp/index.js"] }
+  }
+}

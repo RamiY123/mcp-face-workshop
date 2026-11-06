@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Face Lab · MCP Workshop</title></head>
+<body>
+  <header><a class="brand" href="/">◉ FACE LAB <span>/ MCP WORKSHOP</span></a><span id="connection" role="status">Connecting…</span></header>
+  <main>
+    <section class="intro"><div><p class="eyebrow">A LITTLE EXPRESSION. A VISIBLE TOOL CALL.</p><h1>Give your assistant<br/>a <em>face.</em></h1></div><p class="lede">One conversation. Six reactions.<br/>Watch MCP turn a request into something you can see.</p></section>
+    <div class="workspace">
+      <section class="stage" aria-label="Expression viewer"><div class="stage-top"><span>LIVE VIEWER</span><span id="source">STARTUP</span></div><img id="face" alt="Loading expression"/><div class="stage-bottom"><div><span class="eyebrow">CURRENT EXPRESSION</span><h2 id="current">Neutral</h2></div><span class="asset-badge" id="asset-note">DEVELOPMENT ASSETS</span></div></section>
+      <aside><section class="controls"><p class="eyebrow">01 / TRY A REACTION</p><h2>Set the mood.</h2><p class="muted">Click a preset, or let your assistant call it.</p><div id="buttons" class="buttons"></div><p id="feedback" role="status">Waiting for the viewer…</p></section><section class="trace"><div class="trace-heading"><p class="eyebrow">02 / FOLLOW THE CALL</p><span class="live-dot"></span></div><ol id="log" aria-live="polite"></ol></section></aside>
+    </div>
+    <section class="path"><span>ASSISTANT</span><b>→</b><span>MCP TOOL</span><b>→</b><span>LOCAL SERVER</span><b>→</b><span>YOUR VIEWER</span></section>
+    <footer><span>Expressions are reactions chosen by the assistant, not feelings it experiences.</span><span>FACE LAB / 01</span></footer>
+  </main><script type="module" src="/main.ts"></script>
+</body></html>

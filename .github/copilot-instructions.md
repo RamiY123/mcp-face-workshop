@@ -1,0 +1,1 @@
+Follow AGENTS.md for project and teaching guidance. For setup, running, troubleshooting, and progressive hints, read docs/helper-guide.md. Copilot connection steps are in docs/client-setup/copilot.md. Use connected face tools during the requested demo; report display status accurately.
