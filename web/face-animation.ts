@@ -21,7 +21,7 @@ export function createFaceAnimator(face: HTMLImageElement) {
     const rect = face.getBoundingClientRect();
     if (!rect.width || !rect.height) return;
     const intense = ['angry', 'shocked', 'laughing', 'love'].includes(name);
-    const duration = intense ? 1250 : 1050;
+    const duration = intense ? 2500 : 2100;
     const angle = name === 'angry' ? 11 : name === 'sleepy' ? -9 : 7;
     const visibleSize = Math.min(rect.width, rect.height);
     const scale = Math.max(1, Math.min(intense ? 2.05 : 1.8, (innerWidth - 40) / visibleSize, (innerHeight - 80) / visibleSize));
@@ -59,7 +59,7 @@ export function createFaceAnimator(face: HTMLImageElement) {
       { transform: 'translate(-50%, -50%) scale(.6)', opacity: 0 },
       { transform: 'translate(-50%, -50%) scale(.9)', opacity: .6, offset: .2 },
       { transform: 'translate(-50%, -50%) scale(1.4)', opacity: 0 }
-    ], { duration: 600, delay: duration * .2, fill: 'both', easing: 'ease-out' }));
+    ], { duration: 1200, delay: duration * .2, fill: 'both', easing: 'ease-out' }));
     for (let index = 0; index < 8; index++) {
       const spark = document.createElement('span');
       spark.className = 'reaction-spark';
@@ -72,7 +72,7 @@ export function createFaceAnimator(face: HTMLImageElement) {
         { transform: sparkTransform(.5), opacity: 0 },
         { transform: sparkTransform(.9), opacity: 1, offset: .2 },
         { transform: sparkTransform(1.4), opacity: 0 }
-      ], { duration: 550, delay: duration * .23, fill: 'both', easing: 'ease-out' }));
+      ], { duration: 1100, delay: duration * .23, fill: 'both', easing: 'ease-out' }));
     }
     active = { layer, animations };
     animation.finished.then(() => { if (active?.layer === layer) stop(); }).catch(() => { /* A newer command or reduced-motion change cancelled this effect. */ });
