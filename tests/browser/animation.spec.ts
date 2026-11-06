@@ -9,7 +9,7 @@ test('expression animation leaves the card, returns, and can replay the same rea
     expect(await response.json()).toMatchObject({ displayed: true });
     await expect(page.locator('.face-popout')).toHaveCount(1);
     // Freeze the Web Animation at its peak to inspect geometry without timing races.
-    await page.locator('.face-popout').evaluate(el => { const animation = el.getAnimations()[0]; animation.pause(); animation.currentTime = 1250 * .31; });
+    await page.locator('.face-popout').evaluate(el => { const animation = el.getAnimations()[0]; animation.pause(); animation.currentTime = Number(animation.effect!.getTiming().duration) * .31; });
     const card = (await page.locator('.stage').boundingBox())!;
     const flying = (await page.locator('.face-popout').boundingBox())!;
     expect(flying.y < card.y || flying.x + flying.width > card.x + card.width).toBe(true);
